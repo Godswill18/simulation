@@ -1,0 +1,17 @@
+digraph G { graph [fontname="Helvetica" fontsize=12 bgcolor="white" pad=0.3 nodesep=0.35 ranksep=0.45];
+node [fontname="Helvetica" fontsize=11 style="filled,rounded" shape=box color="#1f3a5f" fillcolor="#1f3a5f" fontcolor="white" penwidth=1.2];
+edge [fontname="Helvetica" fontsize=10 color="#4a5568" fontcolor="#4a5568" arrowsize=0.8]; rankdir=TB; compound=true;
+subgraph cluster_in { label="Inputs" style="rounded,filled" fillcolor="#eef2f6" color="#1f3a5f" fontcolor="#1f3a5f";
+  cfg [label="config.py\nparameters, thresholds,\nseed 2026"]; des [label="experiment.py\n80-run design\n(paired seeds)"]; }
+subgraph cluster_model { label="Simulation model (per run, per branch)" style="rounded,filled" fillcolor="#f7f7f5" color="#2a7f7a" fontcolor="#2a7f7a";
+  cond [label="network.py: Conditions\nP0-A, P0-B, P1, P2 schedule" fillcolor="#4a5568" color="#4a5568"];
+  mon [label="monitor.py\nprobes + SLA windows" fillcolor="#2a7f7a" color="#2a7f7a"];
+  pol [label="Path policy\nstatic failover | dynamic SLA" fillcolor="#2a7f7a" color="#2a7f7a"];
+  txn [label="transactions.py\nPoisson arrivals, queues,\nloss, retransmission, timeout" fillcolor="#2a7f7a" color="#2a7f7a"];
+  met [label="run.py\nrun-level metrics,\n3 availability measures"];
+  cond->mon; cond->txn; mon->pol; pol->txn [label=" selected path"]; txn->met; pol->met; }
+subgraph cluster_out { label="Outputs" style="rounded,filled" fillcolor="#eef2f6" color="#1f3a5f" fontcolor="#1f3a5f";
+  csv [label="CSV datasets\nrun-level, time series,\nswitch events" fillcolor="#b7791f" color="#b7791f"];
+  ana [label="analysis.py\ntables + Wilcoxon/Holm"]; fig [label="figures.py\ngraphs"]; dash [label="dashboard.html"]; }
+cfg->cond [lhead=cluster_model]; des->mon [lhead=cluster_model]; met->csv; csv->ana; csv->fig; ana->dash; fig->dash;
+}

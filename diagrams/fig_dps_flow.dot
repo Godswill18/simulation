@@ -1,0 +1,16 @@
+digraph G { graph [fontname="Helvetica" fontsize=12 bgcolor="white" pad=0.3 nodesep=0.35 ranksep=0.45];
+node [fontname="Helvetica" fontsize=11 style="filled,rounded" shape=box color="#1f3a5f" fillcolor="#1f3a5f" fontcolor="white" penwidth=1.2];
+edge [fontname="Helvetica" fontsize=10 color="#4a5568" fontcolor="#4a5568" arrowsize=0.8]; rankdir=TB;
+s [label="Every 0.2 s: send SLA probe on Path A and Path B" fillcolor="#4a5568" color="#4a5568"];
+k [label="Result known when the reply arrives\nor after the 0.5 s probe timeout"];
+w [label="Update per path:\nlatency = mean RTT, last 30 probes\njitter = mean |RTT change|, last 30\nloss = % lost, last 100\nDEAD after 5 losses / ALIVE after 10 replies"];
+a [label="Path A alive AND latency <= 60 ms\nAND jitter <= 10 ms AND loss <= 1 %?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ua [label="Traffic on Path A (preferred)" fillcolor="#2a7f7a" color="#2a7f7a"];
+b [label="Path B in SLA?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ub [label="Steer traffic to Path B\n(switch event logged)" fillcolor="#2a7f7a" color="#2a7f7a"];
+c [label="Any path alive?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ul [label="Use first alive path in priority\norder A, B (degraded, logged)"];
+none [label="No path" fillcolor="#b83232" color="#b83232"];
+s->k->w->a; a->ua [label="yes"]; a->b [label="no"]; b->ub [label="yes"]; b->c [label="no"]; c->ul [label="yes"]; c->none [label="no"];
+ua->s [style=dashed label=" next probe" constraint=false];
+}

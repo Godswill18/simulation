@@ -1,0 +1,17 @@
+digraph G { graph [fontname="Helvetica" fontsize=12 bgcolor="white" pad=0.3 nodesep=0.35 ranksep=0.45];
+node [fontname="Helvetica" fontsize=11 style="filled,rounded" shape=box color="#1f3a5f" fillcolor="#1f3a5f" fontcolor="white" penwidth=1.2];
+edge [fontname="Helvetica" fontsize=10 color="#4a5568" fontcolor="#4a5568" arrowsize=0.8]; rankdir=TB;
+s [label="Start: python run_simulation.py" shape=box fillcolor="#4a5568" color="#4a5568"];
+a [label="Load parameters and master seed (2026)"]; b [label="Build 80-run design\n2 policies x 4 loads x (5 steady + 3 brownout + 2 blackout)"];
+c [label="For each run: derive seed from (load, condition, repetition)\nidentical for both policies"];
+d [label="Pre-roll 30 s so monitors fill their windows"];
+e [label="Run monitor and policy on a 0.2 s grid\n-> selected-path timeline per branch" fillcolor="#2a7f7a" color="#2a7f7a"];
+f [label="Generate Poisson transactions; send each attempt on the\nselected path; apply delay, queueing, loss, retransmission" fillcolor="#2a7f7a" color="#2a7f7a"];
+g [label="Fault schedule: P1 or P2 on Path A at 240-360 s\n(180-300 s of the measurement window)" fillcolor="#b7791f" color="#b7791f"];
+h [label="Discard 60 s warm-up; reduce 420 s window to run-level metrics"];
+i [label="Write CSV: run-level results, per-second series, switch events"];
+j [label="Analysis: aggregate, paired Wilcoxon + sign test, Holm"];
+k [label="Figures + dashboard.html + results_workbook.xlsx" fillcolor="#4a5568" color="#4a5568"];
+s->a->b->c->d->e->f->h->i->j->k; g->e [style=dashed color="#b7791f"]; g->f [style=dashed color="#b7791f"];
+i->c [label=" next run" style=dashed constraint=false];
+}

@@ -1,0 +1,15 @@
+Scenario,Description,Policy,Condition,Load,Runs,Fault txn avail. (%),Baseline,Fault svc avail. (%),p95 RT (ms),Baseline p95,p99 RT (ms),Failover (s),Switches/run
+S1_static_no_backup,Static single path with no backup (original Chapter 3 baseline),Static,blackout,300,5,4.639,100.000,0.00,40.02,59.01,"7,778.28",n/a,6
+S1_static_no_backup,Static single path with no backup (original Chapter 3 baseline),Static,brownout,300,5,100.000,100.000,100.00,130.54,130.54,340.46,n/a,0
+S2_static_slow_detection,Static failover detection 5 s probes x 3 misses,Static,blackout,300,5,97.286,100.000,90.83,59.75,59.01,"3,810.26",11.00,6
+S3_policy_delay_1s,1 s policy/route installation delay for both policies,Dynamic,blackout,300,5,100.000,100.000,98.50,59.22,59.10,63.90,1.80,6
+S3_policy_delay_1s,1 s policy/route installation delay for both policies,Dynamic,brownout,300,5,100.000,100.000,100.00,59.20,59.08,65.12,2.96,6
+S3_policy_delay_1s,1 s policy/route installation delay for both policies,Static,blackout,300,5,100.000,100.000,96.67,59.14,59.01,69.95,4.00,6
+S3_policy_delay_1s,1 s policy/route installation delay for both policies,Static,brownout,300,5,100.000,100.000,100.00,130.54,130.54,340.46,n/a,0
+S4_timeout_2s,Stricter 2 s transaction timeout (terminal-style),Dynamic,blackout,300,5,100.000,100.000,99.33,59.10,59.10,63.10,0.80,6
+S4_timeout_2s,Stricter 2 s transaction timeout (terminal-style),Dynamic,brownout,300,5,100.000,100.000,100.00,59.06,59.08,63.82,1.84,6
+S4_timeout_2s,Stricter 2 s transaction timeout (terminal-style),Static,blackout,300,5,98.952,100.000,97.50,58.85,59.01,63.50,3.00,6
+S4_timeout_2s,Stricter 2 s transaction timeout (terminal-style),Static,brownout,300,5,100.000,100.000,100.00,130.54,130.54,340.45,n/a,0
+S5_dps_probe_window_10,DPS latency/jitter window of 10 probes instead of 30,Dynamic,brownout,300,5,100.000,100.000,100.00,58.90,59.08,62.66,0.20,8
+S6_dps_holddown_20s,DPS hold-down of 20 s before returning to Path A,Dynamic,brownout,450,5,100.000,100.000,100.00,61.54,61.36,65.79,0.53,65
+S6_dps_holddown_20s,DPS hold-down of 20 s before returning to Path A,Dynamic,steady,450,5,n/a,n/a,n/a,61.52,61.17,66.01,n/a,94

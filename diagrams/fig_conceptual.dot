@@ -1,0 +1,10 @@
+digraph G { graph [fontname="Helvetica" fontsize=12 bgcolor="white" pad=0.3 nodesep=0.35 ranksep=0.45];
+node [fontname="Helvetica" fontsize=11 style="filled,rounded" shape=box color="#1f3a5f" fillcolor="#1f3a5f" fontcolor="white" penwidth=1.2];
+edge [fontname="Helvetica" fontsize=10 color="#4a5568" fontcolor="#4a5568" arrowsize=0.8]; rankdir=LR;
+iv [label="INDEPENDENT VARIABLE\nPath-selection policy\nStatic (with failover) vs Dynamic (SLA-based)"];
+ctl [label="CONTROLLED FACTORS\nTopology, path profiles, offered load,\nmessage size, fault schedule, seeds" fillcolor="#b7791f" color="#b7791f"];
+dv1 [label="PRIMARY DEPENDENT VARIABLES\nTransaction response time (p95)\nData availability: transaction, service,\nSLA-compliant time" fillcolor="#2a7f7a" color="#2a7f7a"];
+dv2 [label="SECONDARY MEASURES\nLatency, jitter, message loss, throughput,\nfailover / recovery / fail-back time,\npath-switching frequency" fillcolor="#4a5568" color="#4a5568"];
+ism [label="DeLone & McLean constructs\nsystem quality, information quality,\nservice quality" fillcolor="white" fontcolor="#1f3a5f"];
+iv->dv1 [label=" affects"]; iv->dv2 [label=" affects" style=dashed]; ctl->dv1 [label=" held constant" style=dashed color="#b7791f" fontcolor="#b7791f"];
+dv1->ism [label=" indicators of" style=dotted]; }

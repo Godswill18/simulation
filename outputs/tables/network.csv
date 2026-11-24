@@ -1,0 +1,7 @@
+Condition,Window,Policy,"Latency, mean RTT (ms)",Jitter (ms),Message loss (%),Throughput (tps),Retransmitted txns (%),Path switches / branch-hour
+steady,measurement,Static,27.78,1.62,0.000,712.4,0.000,0.0
+steady,measurement,Dynamic,29.50,1.70,0.000,712.4,0.000,574.3
+brownout,fault,Static,108.30,18.85,2.003,712.2,3.965,0.0
+brownout,fault,Dynamic,51.84,3.04,0.031,712.2,0.059,392.1
+blackout,fault,Static,51.07,2.80,3.732,711.3,2.518,17.1
+blackout,fault,Dynamic,51.07,2.80,0.491,711.3,0.570,398.2

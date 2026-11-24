@@ -1,0 +1,18 @@
+digraph G { graph [fontname="Helvetica" fontsize=12 bgcolor="white" pad=0.3 nodesep=0.35 ranksep=0.45];
+node [fontname="Helvetica" fontsize=11 style="filled,rounded" shape=box color="#1f3a5f" fillcolor="#1f3a5f" fontcolor="white" penwidth=1.2];
+edge [fontname="Helvetica" fontsize=10 color="#4a5568" fontcolor="#4a5568" arrowsize=0.8]; rankdir=TB;
+s [label="Every 1 s: send reachability probe on Path A and Path B" fillcolor="#4a5568" color="#4a5568"];
+r [label="Reply within 1 s?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ok [label="Count consecutive replies"]; lost [label="Count consecutive losses"];
+dn [label="3 losses in a row?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+up [label="3 replies in a row?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+mdn [label="Mark path DOWN"]; mup [label="Mark path UP"];
+q [label="Primary Path A UP?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ua [label="Send traffic on Path A\n(even if slow, jittery or lossy)" fillcolor="#2a7f7a" color="#2a7f7a"];
+q2 [label="Backup Path B UP?" shape=diamond style=filled fillcolor="#b7791f" color="#b7791f"];
+ub [label="Fail over: traffic on Path B" fillcolor="#2a7f7a" color="#2a7f7a"];
+none [label="No path: transactions wait for\nretransmission or time out" fillcolor="#b83232" color="#b83232"];
+s->r; r->ok [label="yes"]; r->lost [label="no"]; ok->up; lost->dn; dn->mdn [label="yes"]; up->mup [label="yes"];
+dn->q [label="no"]; up->q [label="no"]; mdn->q; mup->q;
+q->ua [label="yes"]; q->q2 [label="no"]; q2->ub [label="yes"]; q2->none [label="no"];
+}

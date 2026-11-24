@@ -1,0 +1,7 @@
+Condition,Policy,Runs,WAN link avail. Path A (%),Service avail. (%),SLA-compliant time (%),Transaction avail. (%),Fault-window service avail. (%),Fault-window SLA-compliant (%),Fault-window txn avail. (%),Failed txns (mean/run)
+steady,Static,20,100.000,100.000,100.000,100.0000,n/a,n/a,n/a,0.0
+steady,Dynamic,20,100.000,100.000,100.000,100.0000,n/a,n/a,n/a,0.0
+brownout,Static,12,100.000,100.000,71.429,100.0000,100.000,0.000,100.0000,0.0
+brownout,Dynamic,12,100.000,100.000,99.603,100.0000,100.000,98.611,100.0000,0.0
+blackout,Static,8,71.429,99.286,99.286,100.0000,97.500,97.500,100.0000,0.0
+blackout,Dynamic,8,71.429,99.835,99.835,100.0000,99.424,99.424,100.0000,0.0

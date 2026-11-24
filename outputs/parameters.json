@@ -1,0 +1,104 @@
+{
+  "n_branches": 3,
+  "paths": [
+    "A",
+    "B"
+  ],
+  "loads_tps": [
+    50,
+    150,
+    300,
+    450
+  ],
+  "arrival_process": "poisson",
+  "wire_bytes": 640,
+  "proc_median_ms": 4.0,
+  "proc_sigma": 0.5,
+  "timeout_s": 10.0,
+  "rto_initial_s": 0.25,
+  "rto_backoff": 2.0,
+  "capacity_mbps": {
+    "A": 2.56,
+    "B": 10.24
+  },
+  "warmup_s": 60.0,
+  "measure_s": 420.0,
+  "fault_at_s": 180.0,
+  "fault_duration_s": 120.0,
+  "preroll_s": 30.0,
+  "dps_probe_interval_s": 0.2,
+  "dps_probe_timeout_s": 0.5,
+  "dps_latency_window": 30,
+  "dps_loss_window": 100,
+  "dps_failtime": 5,
+  "dps_recoverytime": 10,
+  "sla_latency_ms": 60.0,
+  "sla_jitter_ms": 10.0,
+  "sla_loss_pct": 1.0,
+  "dps_holddown_s": 0.0,
+  "static_probe_interval_s": 1.0,
+  "static_probe_timeout_s": 1.0,
+  "static_down_after": 3,
+  "static_up_after": 3,
+  "static_backup_enabled": true,
+  "policy_update_delay_s": 0.0,
+  "reps_steady": 5,
+  "impairment_split": [
+    "brownout",
+    "brownout",
+    "brownout",
+    "blackout",
+    "blackout"
+  ],
+  "master_seed": 2026,
+  "derived": {
+    "service_time_ms": {
+      "A": 2.0,
+      "B": 0.5
+    },
+    "capacity_msgs_per_s": {
+      "A": 500.0,
+      "B": 2000.0
+    },
+    "utilisation_path_A_at_loads": {
+      "50": 0.1,
+      "150": 0.3,
+      "300": 0.6,
+      "450": 0.9
+    },
+    "fault_window_abs_s": [
+      240.0,
+      360.0
+    ],
+    "measurement_window_abs_s": [
+      60.0,
+      480.0
+    ],
+    "profiles": {
+      "P0-A normal Path A (MPLS-like)": {
+        "name": "P0-A normal Path A (MPLS-like)",
+        "delay_ms": 10.0,
+        "jitter_ms": 1.0,
+        "loss": 0.0
+      },
+      "P0-B normal Path B (broadband)": {
+        "name": "P0-B normal Path B (broadband)",
+        "delay_ms": 25.0,
+        "jitter_ms": 3.0,
+        "loss": 0.0
+      },
+      "P1 brownout on Path A": {
+        "name": "P1 brownout on Path A",
+        "delay_ms": 50.0,
+        "jitter_ms": 20.0,
+        "loss": 0.02
+      },
+      "P2 blackout on Path A": {
+        "name": "P2 blackout on Path A",
+        "delay_ms": 0.0,
+        "jitter_ms": 0.0,
+        "loss": 1.0
+      }
+    }
+  }
+}

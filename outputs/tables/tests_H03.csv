@@ -1,0 +1,14 @@
+Hypothesis,Metric,Condition,Pairs,Mean static,Mean dynamic,Median diff (S-D),Wilcoxon p (Holm),Sign-test p,r_rb,Note
+H03,"Network latency, mean RTT (ms)",steady,20,27.78,29.50,0.000,0.172,0.062,-1.00,
+H03,Jitter (ms),steady,20,1.62,1.70,0.000,0.172,0.062,-1.00,
+H03,Message loss (%),steady,20,0.00,0.00,0.000,n/a,n/a,0.00,identical in every pair (no test)
+H03,"Throughput (successful tps, 3 branches)",steady,20,712.44,712.44,0.000,n/a,n/a,0.00,identical in every pair (no test)
+H03,"Network latency, mean RTT (ms) [fault window]",brownout,12,108.30,51.84,53.710,0.004,<0.001,1.00,
+H03,Jitter (ms) [fault window],brownout,12,18.85,3.04,15.677,0.004,<0.001,1.00,
+H03,Message loss (%) [fault window],brownout,12,2.00,0.03,1.988,0.004,<0.001,1.00,
+H03,"Throughput (successful tps, 3 branches) [fault window]",brownout,12,712.25,712.25,0.000,n/a,n/a,0.00,identical in every pair (no test)
+H03,"Network latency, mean RTT (ms) [fault window]",blackout,8,51.07,51.07,0.001,0.766,0.289,0.39,
+H03,Jitter (ms) [fault window],blackout,8,2.80,2.80,-0.000,0.945,0.727,0.06,
+H03,Message loss (%) [fault window],blackout,8,3.73,0.49,3.169,0.047,0.008,1.00,
+H03,"Throughput (successful tps, 3 branches) [fault window]",blackout,8,711.28,711.28,0.000,n/a,n/a,0.00,identical in every pair (no test)
+H03,Failover time (s),blackout,8,3.00,0.78,2.200,0.047,0.008,1.00,

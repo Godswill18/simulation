@@ -1,0 +1,7 @@
+Condition,Policy,Mean RT (ms),Network delay (ms),Application processing (ms),Retransmission wait (ms)
+steady,Static,32.32,27.78,4.53,0.000
+steady,Dynamic,34.03,29.50,4.53,0.000
+brownout,Static,58.36,50.75,4.53,3.076
+brownout,Dynamic,41.06,36.48,4.53,0.046
+blackout,Static,55.73,34.62,4.53,16.581
+blackout,Dynamic,42.33,36.68,4.53,1.114

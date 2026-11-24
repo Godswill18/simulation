@@ -1,0 +1,11 @@
+Hypothesis,Metric,Condition,Holm p,Decision
+H01,95th percentile response time (ms),steady,1.000,Fail to reject
+H01,95th percentile response time (ms),brownout,0.003,Reject
+H01,95th percentile response time (ms),blackout,1.000,Fail to reject
+H02,Transaction availability (%) [fault window],brownout,n/a,Fail to reject (identical outcomes)
+H02,End-to-end service availability (%) [fault window],brownout,n/a,Fail to reject (identical outcomes)
+H02,SLA-compliant service time (%) [fault window],brownout,0.003,Reject
+H02,Transaction availability (%) [fault window],blackout,n/a,Fail to reject (identical outcomes)
+H02,End-to-end service availability (%) [fault window],blackout,0.031,Reject
+H02,SLA-compliant service time (%) [fault window],blackout,0.031,Reject
+H03,"Latency, jitter, loss, throughput (3 conditions), failover time (blackout)",all,0.004,Reject (5 of 13 metrics differ significantly)
